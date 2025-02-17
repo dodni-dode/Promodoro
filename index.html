@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>뽀모도로 타이머</title>
+    <!-- 구글 폰트 적용 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+    <div class="container">
+        <!-- 배경 사운드 오디오 -->
+        <audio id="backgroundSound" src="https://www.soundjay.com/nature/sounds/campfire-1.mp3" loop></audio>
+        
+        <header>
+            <h1>뽀모도로 타이머</h1>
+            <h2 id="state">준비</h2>
+        </header>
+        
+        <div class="progress-circle" id="progress"></div>
+        <div id="timer">25:00</div>
+        
+        <!-- 컨트롤 버튼 그룹 -->
+        <div class="control-group">
+            <button class="btn btn-start" id="startBtn">시작</button>
+            <button class="btn btn-pause" id="pauseBtn" disabled>일시정지</button>
+            <button class="btn btn-reset" id="resetBtn">초기화</button>
+        </div>
+        
+        <!-- 통계 영역 -->
+        <section class="stats">
+            <h3>오늘의 사이클 수: <span id="cycleCount">0</span></h3>
+            <h3>총 집중 시간: <span id="totalFocusTime">0</span> 분</h3>
+        </section>
+        
+        <!-- 설정 패널 -->
+        <section class="settings-panel">
+            <div class="section-group">
+                <p>이전에 집중한 시간이 있을 때 추가하세요</p>
+                <div class="input-group">
+                    <label for="manualTotalFocusTime">별도 집중 시간 입력(분):</label>
+                    <div class="plus-group">
+                        <button class="btn btn-minus" id="manualFocusMinusBtn">-</button>
+                        <input type="number" id="manualTotalFocusTime" value="0" readonly />
+                        <button class="btn btn-plus" id="manualFocusPlusBtn">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="section-group">
+                <div class="input-group">
+                    <label for="focusDurationDisplay">집중 시간(분):</label>
+                    <!-- Shortcut 버튼 추가 -->
+                    <div class="shortcut-group">
+                        <button class="btn btn-shortcut" id="shortcut10">10분</button>
+                        <button class="btn btn-shortcut" id="shortcut25">25분</button>
+                        <button class="btn btn-shortcut" id="shortcut50">50분</button>
+                    </div>
+                    <div class="plus-group">
+                        <button class="btn btn-minus" id="focusMinusBtn">-</button>
+                        <input type="number" id="focusDurationDisplay" value="25" min="1" max="60" />
+                        <button class="btn btn-plus" id="focusPlusBtn">+</button>
+                    </div>
+                </div>                              
+                <div class="input-group">
+                    <label for="breakDurationDisplay">휴식 시간(분):</label>
+                    <div class="plus-group">
+                        <button class="btn btn-minus" id="breakMinusBtn">-</button>
+                        <input type="number" id="breakDurationDisplay" value="5" readonly />
+                        <button class="btn btn-plus" id="breakPlusBtn">+</button>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <button class="btn btn-set" id="setBtn">설정</button>
+                </div>
+            </div>
+            <div class="section-group">
+                <div class="input-group">
+                    <label for="bgVolume">배경 소리 볼륨:</label>
+                    <div class="slider-group">
+                        <button class="btn" id="previewBgSound">미리 듣기</button>
+                        <input type="range" id="bgVolume" min="0" max="1" step="0.1" value="0.5" />
+                    </div>
+                    <div class="control-group">
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="toggleBgSound" />
+                            <label for="toggleBgSound"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-group">
+                <div class="input-group">
+                    <label for="beepVolume">Beep 소리 볼륨:</label>
+                    <div class="slider-group">
+                        <button class="btn" id="previewBeep">미리 듣기</button>
+                        <input type="range" id="beepVolume" min="0" max="1" step="0.1" value="0.2" />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+/* 전반적인 레이아웃 및 배경 */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #74ABE2, #5563DE);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+/* 중앙 컨테이너 (심플 & 모던) */
+.container {
+    background: #ffffff;
+    padding: 40px 30px;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+    width: 360px;
+    text-align: center;
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    margin: 0 0 15px;
+    color: #5563DE;
+    font-size: 32px;
+    letter-spacing: 1px;
+}
+
+#state {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #FF6F61;
+    font-weight: 500;
+}
+
+#timer {
+    font-size: 48px;
+    font-weight: 700;
+    margin: 20px 0 25px;
+    color: #d9534f;
+}
+
+/* 원형 진행바 */
+.progress-circle {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: conic-gradient(#f7f7f7 0deg, #d9534f 0deg);
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.1);
+    margin: 0 auto 25px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+/* 버튼 스타일 (심플 플랫 디자인 with 마이크로 인터랙션) */
+.btn {
+    padding: 12px 20px;
+    margin: 6px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #fff;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.btn-start { background-color: #5cb85c; }
+.btn-start:hover { background-color: #4cae4c; }
+.btn-pause { background-color: #f0ad4e; }
+.btn-pause:hover { background-color: #ec971f; }
+.btn-paused { background-color: #5563DE; }
+.btn-paused:hover { background-color: #414a9e; }
+.btn-reset { background-color: #d9534f; }
+.btn-reset:hover { background-color: #c9302c; }
+.btn-set { background-color: #3a3a3a; }
+.btn-set:hover { background-color: #2e2e2e; }
+
+/* 미리 듣기 및 배경 소리 토글 버튼 색상 */
+#previewBgSound {
+    background-color: #5cb85c;
+}
+#previewBgSound:hover {
+    background-color: #4cae4c;
+}
+#previewBeep {
+    background-color: #5563DE;
+}
+#previewBeep:hover {
+    background-color: #414a9e;
+}
+/* 배경 소리 토글 버튼 (보라색 계열) */
+#toggleBgSound {
+    background-color: #8E44AD;
+}
+#toggleBgSound:hover {
+    background-color: #732d91;
+}
+
+/* 컨트롤 버튼 그룹 */
+.control-group {
+    margin: 20px 0;
+    text-align: center;
+}
+
+/* 통계 영역 */
+.stats {
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 20px 0;
+    font-size: 16px;
+    color: #555;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.stats h3 {
+    margin: 8px 0;
+    font-weight: 400;
+}
+
+/* 설정 패널 (심플 & 깔끔) with slideIn 애니메이션 */
+.settings-panel {
+    background: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: left;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    animation: slideIn 0.6s ease-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.settings-panel .input-group {
+    margin: 15px 0;
+}
+
+.settings-panel label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #444;
+}
+/* 슬라이더 그룹 */
+.slider-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.slider-group button {
+    flex: 0 0 40%;
+    margin-right: 10px;
+}
+.slider-group input[type="range"] {
+    flex: 1;
+}
+
+/* 설정 패널 내부 섹션 그룹 분리 */
+.settings-panel .section-group {
+    padding: 15px 0;
+    border-bottom: 1px dashed #ccc;
+}
+.settings-panel .section-group:last-child {
+    border-bottom: none;
+}
+.settings-panel .section-group + .section-group {
+    margin-top: 20px;
+}
+
+/* 집중/휴식 시간 설정: plus-group */
+.plus-group {
+    display: flex;
+    align-items: center;
+}
+.plus-group input[type="number"] {
+    flex: 1;
+    text-align: center;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    pointer-events: none;
+    margin: 0 8px;
+}
+.btn-plus, .btn-minus {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.btn-plus {
+    background-color: #5563DE;
+}
+.btn-plus:hover {
+    background-color: #414a9e;
+}
+.btn-minus {
+    background-color: #d9534f;
+}
+.btn-minus:hover {
+    background-color: #c9302c;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 480px) {
+    .container {
+        width: 90%;
+        padding: 30px 20px;
+    }
+    h1 {
+        font-size: 28px;
+    }
+    #timer {
+        font-size: 40px;
+    }
+    .btn {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+}
+/* Shortcut 그룹 스타일 */
+.shortcut-group {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.btn-shortcut {
+    padding: 8px 12px;
+    margin: 4px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #5563DE;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-shortcut:hover {
+    background-color: #414a9e;
+    transform: scale(1.05);
+}
+/* 토글 스위치 스타일 (iOS 스타일) */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 32px;
+    vertical-align: middle;
+    margin: 0 8px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-switch label {
+    position: absolute;
+    cursor: pointer;
+    background-color: #ccc;
+    border-radius: 24px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: background-color 0.2s;
+}
+
+.toggle-switch label:before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.2s;
+}
+
+.toggle-switch input:checked + label {
+    background-color: #8E44AD;
+}
+
+.toggle-switch input:checked + label:before {
+    transform: translateX(26px);
+}
+
