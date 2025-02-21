@@ -312,3 +312,8 @@ h1 {
     transform: translateX(26px);
 }
 
+/* 남은 시간 조절 슬라이더 스타일 */
+#timeAdjustSlider {
+    width: 100%;
+    margin-top: 8px;
+}

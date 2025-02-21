@@ -21,7 +21,15 @@
         
         <div class="progress-circle" id="progress"></div>
         <div id="timer">25:00</div>
-        
+
+        <!-- 남은 시간 조절 슬라이더 -->
+        <div class="section-group">
+            <div class="input-group">
+                <label for="timeAdjustSlider">남은 시간 조절 (초):</label>
+                <input type="range" id="timeAdjustSlider" min="0" step="1" />
+            </div>
+        </div>
+
         <!-- 컨트롤 버튼 그룹 -->
         <div class="control-group">
             <button class="btn btn-start" id="startBtn">시작</button>

@@ -22,6 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById("timer").innerText =
                 `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
             this.updateProgressCircle();
+            
+            // 남은 시간 조절 슬라이더 업데이트: 최대값은 totalTime, 현재 값은 timeLeft
+            const timeSlider = document.getElementById("timeAdjustSlider");
+            if (timeSlider) {
+                timeSlider.max = this.totalTime;
+                timeSlider.value = this.timeLeft;
+            }
         },
 
         // 원형 진행바 업데이트 및 pulse 애니메이션 조건 적용
@@ -164,6 +171,15 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo(0, 0);
         }
     };
+
+    // 남은 시간 조절 슬라이더 이벤트: 슬라이더를 움직이면 타이머의 남은 시간이 업데이트됨
+    const timeSlider = document.getElementById("timeAdjustSlider");
+    if (timeSlider) {
+        timeSlider.addEventListener("input", function() {
+            Timer.timeLeft = parseInt(this.value);
+            Timer.updateTimerDisplay();
+        });
+    }
 
     // beep 소리 재생 함수
     function playTone(duration = 600, frequency = 660, type = 'triangle') {
